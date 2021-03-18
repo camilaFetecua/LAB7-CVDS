@@ -1,4 +1,4 @@
-# *LABORATORIO 7 - PERSISTENCIA - 2021-1*
+# *LABORATORIO 8 - MYBATIS-GUICE-PRIMEFACES - 2021-1*
 
 ## **Maria Camila Fetecua – Daniel Alejandro Mejia**
 
