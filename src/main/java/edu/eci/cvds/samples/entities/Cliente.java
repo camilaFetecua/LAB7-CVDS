@@ -43,6 +43,7 @@ public class Cliente implements Serializable{
         this.rentados = new ArrayList<>();
     }
 
+    public boolean getVetado(){ return vetado; }
            
     public String getNombre() {
         return nombre;

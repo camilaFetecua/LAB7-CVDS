@@ -14,6 +14,9 @@
         insert into VI_ITEMS values (#{item.id},#{item.nombre},#{item.descripcion},#{item.fechaLanzamiento},
         #{item.tarifaxDia},#{item.formatoRenta},#{item.genero},#{item.tipo.id});
     </insert>
+    <update id="actualizarTarifaItem" parameterType="map">
+        update VI_ITEMS set tarifaxdia = #{tarifa} where id = #{idItem};
+    </update>
     <resultMap id="ItemResult" type="Item">
         <id property="id" column="id"/>
         <result property="nombre" column="nombre"/>

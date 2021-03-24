@@ -15,88 +15,64 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package edu.eci.cvds.samples.services.client;
-
-
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
-import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
+import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.Item;
+import edu.eci.cvds.samples.entities.ItemRentado;
 import edu.eci.cvds.samples.entities.TipoItem;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.sql.Date;
+
 
 /**
  *
  * @author hcadavid
  */
 public class MyBatisExample {
-
-    /**
-     * Método que construye una fábrica de sesiones de MyBatis a partir del
-     * archivo de configuración ubicado en src/main/resources
-     *
-     * @return instancia de SQLSessionFactory
-     */
-    public static SqlSessionFactory getSqlSessionFactory() {
-        SqlSessionFactory sqlSessionFactory = null;
-        if (sqlSessionFactory == null) {
-            InputStream inputStream;
-            try {
-                inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-            } catch (IOException e) {
-                throw new RuntimeException(e.getCause());
-            }
-        }
-        return sqlSessionFactory;
-    }
-
     /**
      * Programa principal de ejempo de uso de MyBATIS
      * @param args
-     * @throws SQLException 
+     * @throws ExcepcionServiciosAlquiler
      */
-    public static void main(String args[]) throws SQLException, ParseException {
-        SqlSessionFactory sessionfact = getSqlSessionFactory();
+    public static void main(String args[]) throws ExcepcionServiciosAlquiler {
 
-        SqlSession sqlss = sessionfact.openSession();
-        ClienteMapper cm = sqlss.getMapper(ClienteMapper.class);
-        System.out.println(cm.consultarClientes());
-        System.out.println("--------------------------");
+        ServiciosAlquiler serviciosAlquiler = ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarClientes());
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarCliente(71));
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarItemsDisponibles());
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarItem(1));
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarTipoItem(1));
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarTiposItem());
+        System.out.println("--------------------------------------------");
+        //serviciosAlquiler.vetarCliente(2,true);
+        /*serviciosAlquiler.registrarCliente(new Cliente("Daniel",1019139154,"3059231873",
+                "Carrera 123","d.mejia98@gmail.com",false,new ArrayList<ItemRentado>()));*/
+        System.out.println(serviciosAlquiler.consultarCliente(1019139154));
+        System.out.println("--------------------------------------------");
+        System.out.println(serviciosAlquiler.consultarCostoAlquiler(1,2));
+        System.out.println("--------------------------------------------");
+        //serviciosAlquiler.actualizarTarifaItem(1,15);
+        System.out.println(serviciosAlquiler.consultarCostoAlquiler(1,1));
+        System.out.println("--------------------------------------------");
+        /*serviciosAlquiler.registrarItem(new Item(new TipoItem(2,"Accion"),18,"Consola",
+                "Videojuegos",Date.valueOf(LocalDate.now()),1000,"hola","cosa"));*/
+        System.out.println(serviciosAlquiler.consultarItem(18));
+        /*serviciosAlquiler.registrarAlquilerCliente(Date.valueOf(LocalDate.now()),1019139154,
+                new Item(new TipoItem(2,"Accion"), 18,"Consola","Videojuegos",
+                        Date.valueOf(LocalDate.now()),1000,"hola","cosa"),10);*/
+        System.out.println(serviciosAlquiler.consultarCliente(1019139154));
 
-        System.out.println(cm.consultarCliente(4));
-        System.out.println("--------------------------");
 
-        cm.agregarItemRentadoACliente(4,2, new SimpleDateFormat("yyyy/MM/dd").parse("2021/03/15"),
-                new SimpleDateFormat("yyyy/MM/dd").parse("2021/03/17"));
-        System.out.println("--------------------------");
-
-        System.out.println(cm.consultarCliente(4));
-        System.out.println("--------------------------");
-
-        ItemMapper im = sqlss.getMapper(ItemMapper.class);
-        System.out.println(im.consultarItems());
-        System.out.println("--------------------------");
-
-        System.out.println(im.consultarItem(2));
-        /*im.insertarItem(new Item(new TipoItem(2,"comidita"),17,"Pollo","Papas de Pollo",
-                new SimpleDateFormat("yyyy/MM/dd").parse("2021/03/15"),5000,"asasdas",
-                "objeto"));*/
-        System.out.println("--------------------------");
-        System.out.println(im.consultarItem(17));
-        sqlss.commit();
-        sqlss.close();
-
-        
-        
     }
 
 
