@@ -14,5 +14,47 @@ import java.util.List;
 public class AlquilerItemsBean extends BasePageBean{
     @Inject
     private ServiciosAlquiler serviciosAlquiler;
-    private Cliente cliente;
+    private Cliente clienteSeleccionado;
+
+    public Cliente getClienteSeleccionado() {
+        return clienteSeleccionado;
+    }
+
+    public void setClienteSeleccionado(Cliente clienteSeleccionado) {
+        this.clienteSeleccionado = clienteSeleccionado;
+    }
+
+    /**
+     * consultar todos los clientes
+     * @return todos los clientes
+     * @throws ExcepcionServiciosAlquiler
+     */
+    public List<Cliente> consultarClientes() throws ExcepcionServiciosAlquiler {
+        try {
+            return serviciosAlquiler.consultarClientes();
+        } catch (Exception e) {
+            throw new ExcepcionServiciosAlquiler("Error al consultar clientes");
+        }
+    }
+
+    /**
+     * consultar un cliente por su numero dedocumento
+     * @param documento
+     * @return cliente con el documento consultado
+     * @throws ExcepcionServiciosAlquiler
+     */
+    public Cliente consultarCliente(long documento) throws ExcepcionServiciosAlquiler{
+        try{
+            return serviciosAlquiler.consultarCliente(documento);
+        } catch (Exception e) {
+            throw new ExcepcionServiciosAlquiler("Error al consultar clientes");
+        }
+    }
+    public void registrarCliente(long doc, String nombre, String telefono, String direccion, String email){
+        try {
+            serviciosAlquiler.registrarCliente(new Cliente(nombre,doc,telefono,direccion,email));
+        } catch (ExcepcionServiciosAlquiler excepcionServiciosAlquiler) {
+            excepcionServiciosAlquiler.printStackTrace();
+        }
+    }
 }
