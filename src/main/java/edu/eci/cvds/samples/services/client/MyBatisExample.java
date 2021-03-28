@@ -71,8 +71,6 @@ public class MyBatisExample {
                 new Item(new TipoItem(2,"Accion"), 18,"Consola","Videojuegos",
                         Date.valueOf(LocalDate.now()),1000,"hola","cosa"),10);*/
         System.out.println(serviciosAlquiler.consultarCliente(1019139154));
-
-
     }
 
 
