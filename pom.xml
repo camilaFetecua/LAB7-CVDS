@@ -122,7 +122,6 @@
                     <username>sa</username>
                     <password></password>
                     <autocommit>false</autocommit>
-                    <skip>${maven.test.skip}</skip>
                 </configuration>
                 <executions>
                     <execution>
