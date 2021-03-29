@@ -181,15 +181,18 @@ public class ServiciosAlquilerItemsImpl implements ServiciosAlquiler {
             long multa = 0;
             List<Cliente> clientes = consultarClientes();
             for (Cliente i : clientes) {
-                for (ItemRentado j : i.getRentados()) {
-                    if (j.getItem().getId() == iditem) {
-                        LocalDate fin = j.getFechafinrenta().toLocalDate();
-                        LocalDate inicio = j.getFechainiciorenta().toLocalDate();
-                        long retraso = ChronoUnit.DAYS.between(fin, inicio);
-                        if (retraso < 0) {
-                            return multa;
+                if (!i.getRentados().equals(null)) {
+                    for (ItemRentado j : i.getRentados()) {
+                        if (j.getItem().getId() == iditem) {
+                            LocalDate fin = j.getFechafinrenta().toLocalDate();
+                            LocalDate inicio = j.getFechainiciorenta().toLocalDate();
+                            long retraso = ChronoUnit.DAYS.between(fin, inicio);
+                            if (retraso < 0) {
+                                return multa;
+                            } else {
+                                multa = retraso * valorMultaRetrasoxDia(iditem);
+                            }
                         }
-                        else{ multa = retraso*valorMultaRetrasoxDia(iditem);}
                     }
                 }
             }

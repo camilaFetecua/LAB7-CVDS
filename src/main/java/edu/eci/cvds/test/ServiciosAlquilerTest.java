@@ -110,7 +110,7 @@ public class ServiciosAlquilerTest {
     @Test
     public void verificarCostoDeAlquiler(){
         try{
-            Assert.assertEquals(serviciosAlquiler.consultarCostoAlquiler(1,2),30);
+            Assert.assertEquals(serviciosAlquiler.consultarCostoAlquiler(1,2),32);
         }catch (ExcepcionServiciosAlquiler e){
             Assert.fail();
         }

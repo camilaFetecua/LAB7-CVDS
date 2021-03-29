@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title> Servicio de Alquiler </title>
+    <link rel="stylesheet" type="text/css" href="styless.css" />
+</h:head>
+
+<h:body class="body2">
+    <h:form id="Alquiler_Form" class="form2">
+
+        <p:dataTable var="itrent" value="#{AlquilerItemsBean.getSelectedCliente().rentados}"
+                     paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="10">
+            <f:facet name="header">
+                Items Alquilados
+            </f:facet>
+            <p:column headerText="Item Rentado">
+                <h:outputText value="#{itrent.id}"/>
+            </p:column>
+            <p:column headerText="Fecha Inicio">
+                <h:outputText value="#{itrent.fechainiciorenta}"/>
+            </p:column>
+            <p:column headerText="Fecha Fin">
+                <h:outputText value="#{itrent.fechafinrenta}"/>
+            </p:column>
+
+        </p:dataTable>
+
+        <br/>
+        <p:outputLabel class="labelCenter" style="font-size: 25px"><strong>Alquilar Item</strong></p:outputLabel>
+
+        <h:panelGrid id="grid" cellpadding="5" columns="2" class="panelCenter" style="margin-bottom:10px">
+
+            <p:outputLabel value="ItemID"/>
+            <p:inputText id="itid" type="int" binding="#{itid}"/>
+
+            <p:outputLabel value="Dias"/>
+            <p:inputText id="ndias" type="int" binding="#{dias}"/>
+
+            <p:outputLabel value="Costo: "/>
+            <p:outputLabel value="#{AlquilerItemsBean.costo}"/>
+            <p:commandButton class="buttons" value="Consular costo" action="#{AlquilerItemsBean.consultarCosto(itid.value,dias.value)}" update="Alquiler_Form"/>
+
+            <p:commandButton class="buttons" value="Alquilar" action="registroCliente?faces-redirect = true" >
+                <f:actionListener binding="#{AlquilerItemsBean.registrarAlquilerCliente(itid.value,dias.value)}"/>
+            </p:commandButton>
+            <p:commandButton class="buttons" value="Volver" action="registroCliente?faces-redirect = true"/>
+
+        </h:panelGrid>
+
+
+    </h:form>
+</h:body>
+
+
+</html>
