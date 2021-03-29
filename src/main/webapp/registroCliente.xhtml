@@ -13,7 +13,7 @@ and open the template in the editor.
 <h:head>
 
     <title> Servicios cliente </title>
-    <link rel="stylesheet" type="text/css" href="styleClient.css" />
+    <link rel="stylesheet" type="text/css" href="styless.css" />
 
 
 </h:head>
@@ -21,11 +21,11 @@ and open the template in the editor.
 
 <h:body>
 
-    <h:form id="Client_Form">
+    <h:form id="Client_Form" class="form">
 
         <p:dataTable var="cliente" value="#{AlquilerItemsBean.consultarClientes()}"
                      paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="10" selectionMode="single" id="documento" selection="#{AlquilerItemsBean.clienteSeleccionado}"
+                     rows="10" selectionMode="single" id="documento" selection="#{AlquilerItemsBean.selectedCliente}"
                      rowKey="#{cliente.getDocumento()}">
             <f:facet name="header">
                 Clientes
@@ -50,32 +50,35 @@ and open the template in the editor.
             </p:column>
 
             <f:facet name="footer">
-                <h:commandButton id="clisele"  value="Ver" action="registroalquiler?faces-redirect = true"/>
+                <h:commandButton id="clisele"  value="Ver" action="registroAlquiler?faces-redirect = true">
+                    <f:actionListener binding="#{AlquilerItemsBean.setSelectedCliente(AlquilerItemsBean.selectedCliente)}"/>
+                </h:commandButton>
+
             </f:facet>
         </p:dataTable>
 
 
         <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
-            <p:outputLabel for="Documento" style="color:red;font-size:200%" value="Documento: " />
-            <p:inputText id="Documento" type="long" binding="#{doc}" />
+            <p:outputLabel for="Documento"  value="Documento: " />
+            <p:inputText class="input" id="Documento" type="long" binding="#{doc}" />
 
-            <p:outputLabel for="Nombre" style="color:red;font-size:200%" value="Nombre: "/>
-            <p:inputText id="Nombre" type="String" binding="#{name}"/>
+            <p:outputLabel for="Nombre"  value="Nombre: "/>
+            <p:inputText class= "input" id="Nombre" type="String" binding="#{name}"/>
 
-            <p:outputLabel for="Direccion" style="color:red;font-size:200%" value="Direccion: "/>
-            <p:inputText id="Direccion" type="String" binding="#{dir}"/>
+            <p:outputLabel for="Direccion" value="Direccion: "/>
+            <p:inputText class= "input" id="Direccion" type="String" binding="#{dir}"/>
 
-            <p:outputLabel for="Telefono" style="color:red;font-size:200%" value="Telefono: " />
-            <p:inputText id="Telefono" type="String" binding="#{tele}"/>
+            <p:outputLabel for="Telefono"  value="Telefono: " />
+            <p:inputText class= "input" id="Telefono" type="String" binding="#{tele}"/>
 
-            <p:outputLabel for="Email" style="color:red;font-size:200%" value="Email: " />
-            <p:inputText id="Email" type="String" binding="#{mail}"/>
+            <p:outputLabel for="Email"  value="Email: " />
+            <p:inputText class= "input" id="Email" type="String" binding="#{mail}"/>
 
 
 
         </h:panelGrid>
-        <div class="divButton">
-            <p:commandButton update="Client_Form" class="Button" actionListener="#{AlquilerItemsBean.registrarCliente(doc.value,name.value,tele.value,dir.value,mail.value)}" value="Registrar Cliente"/>
+        <div class="buttons ">
+            <p:commandButton update="Client_Form" class="buttons " actionListener="#{AlquilerItemsBean.registrarCliente(doc.value,name.value,tele.value,dir.value,mail.value)}" value="Registrar Cliente"/>
         </div>
     </h:form>
 </h:body>

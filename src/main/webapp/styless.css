@@ -1,0 +1,84 @@
+    
+html, body{
+    background:rgba(58,34,195,1);
+    background: linear-gradient(0deg, rgba(111,45,253,1) 0%, rgba(58,34,195,1) 88%);
+    display: flex;
+    align-items: center;
+    font-family: 'Muli', sans-serif;
+}
+
+.body2{
+   background:rgba(58,34,195,1);
+   background: linear-gradient(0deg, rgba(111,45,253,1) 0%, rgba(58,34,195,1) 88%);
+   display: flex;
+   align-items: center;
+   font-family: 'Muli', sans-serif;
+   margin-inline:2%;
+   margin-block-end:1.7%;
+}
+
+.form2{
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 40px;
+    color: white;
+    min-height: calc(100vh - 560px);
+    padding: 71px;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    margin-block:10%
+}
+
+.form {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 40px;
+    color: white;
+    min-height: calc(100vh - 200px);
+    padding: 69px;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.input{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 40px;
+}
+
+.buttons{
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.0);
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    height: 40px;
+    margin-right: 10px;
+    text-shadow: none;
+}
+
+.Restart{
+    background-color: rgba(255, 255, 255, 0.0);
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+    height: 50px;
+}
+
+
+
+
+
+
