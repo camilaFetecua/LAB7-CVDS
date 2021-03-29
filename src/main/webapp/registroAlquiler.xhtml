@@ -25,8 +25,15 @@ and open the template in the editor.
                 Items Alquilados
             </f:facet>
             <p:column headerText="Item Rentado">
-                <h:outputText value="#{itrent.item.nombre}"/>
+                <h:outputText value="#{itrent.id}"/>
             </p:column>
+            <p:column headerText="Fecha Inicio">
+                <h:outputText value="#{itrent.fechainiciorenta}"/>
+            </p:column>
+            <p:column headerText="Fecha Fin">
+                <h:outputText value="#{itrent.fechafinrenta}"/>
+            </p:column>
+
         </p:dataTable>
 
         <br/>
@@ -47,13 +54,9 @@ and open the template in the editor.
             <p:commandButton class="buttons" value="Alquilar" action="registroCliente?faces-redirect = true" >
                 <f:actionListener binding="#{AlquilerItemsBean.registrarAlquilerCliente(itid.value,dias.value)}"/>
             </p:commandButton>
+            <p:commandButton class="buttons" value="Volver" action="registroCliente?faces-redirect = true"/>
 
         </h:panelGrid>
-
-
-
-
-
 
 
     </h:form>
