@@ -16,7 +16,7 @@
 
 **1.Realice los cambios necesarios en el archivo pom.xml de tal forma que el proyecto se construya de manera correcta como una aplicación WEB, incluyendo las dependencias (jstl, jsf-api, jsf-impl, primefaces, etc) y los plugins (maven war, tomcat7 maven, etc.).
 
-![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/11.PNG)
+![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/pruebas.PNG)
 
 **2.Agregue el archivo web.xml requerido con la configuración necesaria
 ![Imagen](https://github.com/Desarik98/Lab07-CVDS/blob/master/img/13.PNG)
