@@ -30,11 +30,9 @@
 
 ## PARTE IV - ENTREGA CONTINUA
 
-![Imagen] https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/ult.png
 
-https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/unknowult2.png
+![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/ult.png)
 
-
-
+![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/unknowult2.png)
 
 
