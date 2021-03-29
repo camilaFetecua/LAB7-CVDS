@@ -9,11 +9,7 @@
 
 ![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/11.PNG)
 
-## PARTE II - PRUEBAS
 
-
-
-![Imagen]()
 
 
 ## PARTE III - CAPA PRESENTACIÓN
