@@ -20,6 +20,7 @@
 
 **2.Agregue el archivo web.xml requerido con la configuración necesaria
 ![Imagen](https://github.com/Desarik98/Lab07-CVDS/blob/master/img/13.PNG)
+https://alquilerdeitems.herokuapp.com
 
 
 
@@ -30,5 +31,7 @@
 ![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/ult.png)
 
 ![Imagen](https://github.com/camilaFetecua/LAB8-CVDS/blob/master/img/unknowult2.png)
+
+
 
 
